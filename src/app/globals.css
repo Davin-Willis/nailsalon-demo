@@ -1,26 +1,49 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-blush: #f8eee9;
+  --color-cream: #fdf8f3;
+  --color-cocoa: #4a3b40;
+  --color-muted: #8d757d;
+  --color-line: rgba(74, 59, 64, 0.14);
+  --color-rose: #b76e79;
+
+  --font-display: var(--font-bodoni);
+  --font-sans: var(--font-jost);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-blush);
+  color: var(--color-cocoa);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--color-rose);
+  color: var(--color-cream);
+}
+
+/* Diagonal crosshatch fill for clearly-marked photo placeholders */
+.placeholder-hatch {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(74, 59, 64, 0.08) 0 1px,
+    transparent 1px 10px
+  );
+}
+
+/* Soft, desaturated treatment for the embedded map */
+.map-soft {
+  filter: grayscale(0.8) sepia(0.15) contrast(0.95) brightness(1.02);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
